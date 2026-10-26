@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Randy Greven Consultancy</title>
+<meta name="description" content="Randy Greven Consultancy – freelance BI & data consultant. Van business analyse en datamodellering tot dataplatform en Power BI. 25 jaar IT-ervaring, 12 jaar BI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned editorial column; hero pairs thesis with a quiet trend chart and a client strip; sections divided by thin rules, mono labels as "field names". */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #141b26;
+  --muted: #566070;
+  --line: #dde1e7;
+  --bar: #cfd6e0;
+  --accent: #e5b400;
+  --accent-ink: #141b26;
+  --deep: #1b2a3f;
+  --deep-fg: #eef1f5;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141c; --surface: #161d28; --ink: #e8ecf2; --muted: #9aa5b5; --line: #263042; --bar: #2c3a50;
+    --accent: #f2c811; --accent-ink: #141b26; --deep: #1a2433; --deep-fg: #e8ecf2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141c; --surface: #161d28; --ink: #e8ecf2; --muted: #9aa5b5; --line: #263042; --bar: #2c3a50;
+  --accent: #f2c811; --accent-ink: #141b26; --deep: #1a2433; --deep-fg: #e8ecf2; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+.label { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* nav */
+header.top { border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 19px; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand .mark { width: 22px; height: 22px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; gap: 2px; }
+.brand .mark i { display: block; background: var(--ink); border-radius: 1px; }
+.brand .mark i:nth-child(1) { height: 45%; } .brand .mark i:nth-child(2) { height: 75%; } .brand .mark i:nth-child(3) { height: 100%; background: var(--accent); }
+nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; flex-wrap: wrap; font-size: 15px; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding-block: 72px 80px; }
+.hero h1 { font-size: clamp(40px, 6vw, 68px); font-weight: 700; letter-spacing: -.02em; }
+.hero h1 em { font-style: normal; background: linear-gradient(transparent 78%, var(--accent) 78%, var(--accent) 92%, transparent 92%); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hero p.lead { font-size: 20px; color: var(--muted); max-width: 34ch; margin: 24px 0 32px; }
+.cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 6px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.ghost:hover { background: var(--surface); }
+
+/* hero visual */
+.hero-visual { margin: 0; min-width: 0; }
+.chart { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
+.chart .axis { stroke: var(--line); stroke-width: 1.5; }
+.chart .bar { fill: var(--bar); }
+.chart .bar.hi { fill: var(--accent); }
+.chart .trend { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .dot { fill: var(--accent); stroke: var(--ink); stroke-width: 2; }
+.chart .dot-ring { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: .5; }
+
+/* trust strip */
+.trust { border-top: 1px solid var(--line); background: var(--surface); }
+.trust .wrap { display: flex; align-items: center; gap: 12px 32px; flex-wrap: wrap; padding-block: 22px; }
+.trust .label { margin: 0; white-space: nowrap; }
+.trust ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.trust li { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--muted); }
+
+/* sections */
+section.block { border-top: 1px solid var(--line); }
+section.block > .wrap { padding-block: 80px; }
+.sec-head { display: grid; grid-template-columns: 260px 1fr; gap: 40px; margin-bottom: 48px; }
+.sec-head h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 700; letter-spacing: -.01em; }
+.sec-head p { color: var(--muted); max-width: 60ch; margin: 14px 0 0; }
+
+.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.service { background: var(--surface); padding: 32px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.service h3 { font-size: 24px; font-weight: 700; }
+.service p { margin: 0; color: var(--muted); }
+.service ul { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.service li { font-family: var(--font-mono); font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 4px; }
+
+.process { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; counter-reset: step; }
+.process li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 18px; min-width: 0; }
+.process li::before { content: "0" counter(step); font-family: var(--font-mono); font-size: 13px; color: var(--muted); display: block; margin-bottom: 10px; }
+.process h3 { font-size: 21px; margin-bottom: 8px; }
+.process p { margin: 0; color: var(--muted); font-size: 16px; }
+
+.stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.stack h3 { font-family: var(--font-mono); font-weight: 500; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.stack ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 18px; font-weight: 500; }
+
+.about { display: grid; grid-template-columns: 260px 1fr; gap: 40px; }
+.about .text { max-width: 62ch; }
+.about .text p { margin: 0 0 18px; }
+.about .text p:first-child { font-size: 22px; font-family: var(--font-display); font-weight: 500; line-height: 1.35; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 40px; margin: 8px 0 28px; padding: 0; list-style: none; }
+.facts li { display: flex; flex-direction: column; }
+.facts strong { font-family: var(--font-display); font-size: 44px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.certs { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+.certs li { font-family: var(--font-mono); font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+.contact { background: var(--deep); color: var(--deep-fg); }
+.contact .wrap { padding-block: 80px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+.contact h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; }
+.contact p { color: #b9c5d6; max-width: 48ch; margin: 16px 0 0; }
+.contact .mail { font-family: var(--font-mono); font-size: 18px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.contact .mail a { color: var(--deep-fg); text-decoration-color: var(--accent); text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.copy { font-family: var(--font-body); font-size: 14px; padding: 8px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: var(--deep-fg); cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+footer { border-top: 1px solid rgba(255,255,255,.1); background: var(--deep); color: #8e9cb0; font-size: 14px; }
+footer .wrap { padding-block: 24px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hero .wrap, .sec-head, .about, .contact .wrap { grid-template-columns: 1fr; }
+  .hero .wrap { gap: 32px; padding-block: 48px 40px; }
+  .hero-visual { max-width: 420px; }
+  .sec-head { gap: 8px; }
+  .process { grid-template-columns: repeat(2, 1fr); }
+  section.block > .wrap, .contact .wrap { padding-block: 56px; }
+}
+@media (max-width: 620px) {
+  .services, .process, .stack { grid-template-columns: 1fr; }
+  .trust li { font-size: 16px; }
+  .facts { gap: 28px; }
+  .facts strong { font-size: 36px; }
+  .service { padding: 24px; }
+  nav ul { gap: 16px; }
+  .hero p.lead { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Randy Greven Consultancy, naar boven"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Randy Greven Consultancy</a>
+    <nav aria-label="Hoofdmenu">
+      <ul>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#technologie">Technologie</a></li>
+        <li><a href="#over">Over mij</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="label">Freelance BI &amp; data consultant</p>
+        <h1>Van losse bronnen naar <em>cijfers waar u op stuurt</em>.</h1>
+        <p class="lead">Ik help organisaties hun data om te zetten in betrouwbare stuurinformatie. Van de eerste vraag uit de business tot een dashboard dat het management dagelijks gebruikt.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Neem contact op</a>
+          <a class="btn ghost" href="#diensten">Bekijk diensten</a>
+        </div>
+      </div>
+      <figure class="hero-visual" aria-hidden="true">
+        <svg class="chart" viewBox="0 0 480 340" role="img" aria-label="Grafiek met een stijgende trend">
+          <line class="grid" x1="0" x2="480" y1="90" y2="90"/><line class="grid" x1="0" x2="480" y1="160" y2="160"/><line class="grid" x1="0" x2="480" y1="230" y2="230"/><line class="axis" x1="0" x2="480" y1="300" y2="300"/>
+          <rect class="bar" x="10.5" y="204.8" width="9" height="95.2" rx="2"/><rect class="bar" x="40.5" y="185.2" width="9" height="114.8" rx="2"/><rect class="bar" x="70.5" y="193.6" width="9" height="106.4" rx="2"/><rect class="bar" x="100.5" y="168.4" width="9" height="131.6" rx="2"/><rect class="bar" x="130.5" y="174.0" width="9" height="126.0" rx="2"/><rect class="bar" x="160.5" y="151.6" width="9" height="148.4" rx="2"/><rect class="bar" x="190.5" y="160.0" width="9" height="140.0" rx="2"/><rect class="bar" x="220.5" y="137.6" width="9" height="162.4" rx="2"/><rect class="bar" x="250.5" y="143.2" width="9" height="156.8" rx="2"/><rect class="bar" x="280.5" y="120.8" width="9" height="179.2" rx="2"/><rect class="bar" x="310.5" y="129.2" width="9" height="170.8" rx="2"/><rect class="bar" x="340.5" y="104.0" width="9" height="196.0" rx="2"/><rect class="bar" x="370.5" y="109.6" width="9" height="190.4" rx="2"/><rect class="bar" x="400.5" y="84.4" width="9" height="215.6" rx="2"/><rect class="bar" x="430.5" y="70.4" width="9" height="229.6" rx="2"/><rect class="bar hi" x="460.5" y="45.2" width="9" height="254.8" rx="2"/>
+          <path class="trend" d="M15.0 190.8 C20.0 187.5 35.0 173.1 45.0 171.2 C55.0 169.3 65.0 182.4 75.0 179.6 C85.0 176.8 95.0 157.7 105.0 154.4 C115.0 151.1 125.0 162.8 135.0 160.0 C145.0 157.2 155.0 139.9 165.0 137.6 C175.0 135.3 185.0 148.3 195.0 146.0 C205.0 143.7 215.0 126.4 225.0 123.6 C235.0 120.8 245.0 132.0 255.0 129.2 C265.0 126.4 275.0 109.1 285.0 106.8 C295.0 104.5 305.0 118.0 315.0 115.2 C325.0 112.4 335.0 93.3 345.0 90.0 C355.0 86.7 365.0 98.9 375.0 95.6 C385.0 92.3 395.0 76.9 405.0 70.4 C415.0 63.9 425.0 62.9 435.0 56.4 C445.0 49.9 460.0 35.4 465.0 31.2"/>
+          <circle class="dot-ring" cx="465.0" cy="31.2" r="11"/><circle class="dot" cx="465.0" cy="31.2" r="5"/>
+        </svg>
+      </figure>
+    </div>
+    <div class="trust">
+      <div class="wrap">
+        <p class="label">Werkte onder meer voor</p>
+        <ul>
+          <li>Schiphol Group</li><li>KLM Catering Services</li><li>FNV</li><li>Rochdale</li><li>Waterschap Scheldestromen</li><li>Joulz</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="diensten">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Diensten</p>
+        <div>
+          <h2>Van business analyse tot rapport</h2>
+          <p>Ik werk het liefst over de hele keten, van de vraag uit de business tot de back-end en het rapport. Zoekt u versterking op één onderdeel? Ook dan bent u bij mij aan het juiste adres. U huurt mij in op uurbasis.</p>
+        </div>
+      </div>
+      <div class="services">
+        <article class="service">
+          <h3>Business analyse &amp; modellering</h3>
+          <p>Ik vertaal informatiebehoeften naar eenduidige definities en een datamodel dat past bij hoe uw organisatie werkt. Zo betekent een KPI overal hetzelfde, in elk rapport.</p>
+          <ul><li>Requirements</li><li>KPI-definities</li><li>Dimensioneel modelleren</li></ul>
+        </article>
+        <article class="service">
+          <h3>Data engineering</h3>
+          <p>Robuuste laadprocessen die data uit uw bronsystemen ophalen, valideren en op tijd klaarzetten op uw dataplatform. Gebouwd om beheerbaar te blijven, ook als de organisatie groeit.</p>
+          <ul><li>ETL / ELT</li><li>Datakwaliteit</li><li>Monitoring</li></ul>
+        </article>
+        <article class="service">
+          <h3>Power BI</h3>
+          <p>Semantische modellen, DAX-measures en rapporten die snel zijn, kloppen en door gebruikers begrepen worden. Van een eerste dashboard tot een organisatiebreed model.</p>
+          <ul><li>DAX</li><li>Power Query</li><li>Row-level security</li></ul>
+        </article>
+        <article class="service">
+          <h3>Optimalisatie</h3>
+          <p>Trage queries, laadprocessen die uitlopen of rapporten die haperen. Ik analyseer waar het knelt en los het structureel op, in plaats van symptomen te bestrijden.</p>
+          <ul><li>Query tuning</li><li>Indexering</li><li>Modeloptimalisatie</li></ul>
+        </article>
+        <article class="service">
+          <h3>Architectuur &amp; advies</h3>
+          <p>Dankzij mijn achtergrond als software engineer en architect kijk ik verder dan het rapport. Ik let erop dat een oplossing schaalbaar en beheerbaar is en past in uw IT-landschap.</p>
+          <ul><li>Solution design</li><li>Review</li><li>Best practices</li></ul>
+        </article>
+        <article class="service">
+          <h3>Scrum Master &amp; Product Owner</h3>
+          <p>Gecertificeerd én met praktijkervaring. Ik kan deze rol in uw BI-team vervullen, naast of in plaats van het ontwikkelwerk.</p>
+          <ul><li>SCM</li><li>SCPO</li><li>Agile BI-teams</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="technologie">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Technologie</p>
+        <div>
+          <h2>Het vraagstuk eerst, dan de tool</h2>
+          <p>Ik kies de techniek die past bij uw organisatie en uw bestaande landschap. Mijn basis ligt in het Microsoft-ecosysteem, en ik werk net zo goed met moderne platformen als Fabric en Databricks.</p>
+        </div>
+      </div>
+      <div class="stack">
+        <div><h3>Integratie &amp; transformatie</h3><ul><li>Azure Data Factory</li><li>SQL / T-SQL</li><li>dbt</li></ul></div>
+        <div><h3>Dataplatform</h3><ul><li>SQL Server &amp; Azure SQL</li><li>Microsoft Fabric</li><li>Databricks</li></ul></div>
+        <div><h3>Analyse &amp; rapportage</h3><ul><li>Power BI</li><li>DAX &amp; Power Query</li><li>Excel</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="block" id="over">
+    <div class="wrap about">
+      <p class="label">Over mij</p>
+      <div class="text">
+        <p>Ik ben Randy Greven: BI- en dataconsultant met de basis van een software engineer.</p>
+        <ul class="facts">
+          <li><strong>25</strong><span>jaar in de IT</span></li>
+          <li><strong>12</strong><span>jaar in BI</span></li>
+          <li><strong>7</strong><span>jaar zelfstandig</span></li>
+        </ul>
+        <p>Na mijn opleiding Hogere Informatica werkte ik bij softwarebedrijven, eerst als software engineer en later zes jaar als teammanager en architect. Veel van dat werk speelde zich af in het domein van fysiek assetmanagement. Daarna heb ik de overstap gemaakt naar BI, sinds zeven jaar als zelfstandig consultant.</p>
+        <p>Die combinatie merkt u in de praktijk. Ik bouw met de discipline van een software engineer: gestructureerd, gedocumenteerd en overdraagbaar. Tegelijk praat ik net zo makkelijk met een manager over stuurinformatie als met een developer over een datamodel.</p>
+        <ul class="certs" aria-label="Certificeringen">
+          <li>Scrum Master (SCM)</li>
+          <li>Scrum Product Owner (SCPO)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="label" style="color:#9fb0c6">Contact</p>
+      <h2>Versterking nodig voor uw BI-team?</h2>
+      <p>Stuur mij een e-mail met uw vraag. Dan laat ik u weten wanneer ik beschikbaar ben en wat ik voor u kan betekenen.</p>
+    </div>
+    <div class="mail">
+      <a id="mail" href="mailto:randy@randygreven.nl">randy@randygreven.nl</a>
+      <button class="copy" id="copy-mail" type="button">Kopieer</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Randy Greven Consultancy</span>
+    <span>BI &amp; data consultancy · Microsoft-platform</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const btn = document.getElementById('copy-mail');
+btn.addEventListener('click', () => {
+  const addr = document.getElementById('mail').textContent;
+  const done = () => { btn.textContent = 'Gekopieerd'; setTimeout(() => btn.textContent = 'Kopieer', 1800); };
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(addr).then(done).catch(() => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('mail'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  }
+});
+</script>
+</body>
+</html>
